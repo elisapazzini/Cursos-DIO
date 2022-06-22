@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamentos - flex basis e flex shrink</title>
+    <style>
+        .flex-container {
+            display: flex;
+            border: 2px solid black;
+            max-width: 500px;
+        }
+
+        .item {
+            background-color: coral;
+            margin: 5px;
+            text-align: center;
+            color: white;
+        }
+
+        .item2 {
+            background-color: lime;
+            margin: 5px;
+            text-align: center;
+            color: white;
+            font-size: 24px;
+        }
+
+        .bauto {
+            flex-basis: auto;
+        }
+
+        .fg-1 {
+            flex-grow: 1;
+        }
+
+        .fg-2 {
+            flex-grow: 2;
+        }
+
+        .b-0 {
+            flex-basis: 0;
+        }
+
+        .w-100 {
+            flex-basis: 100px;
+        }
+
+        .s-0 {
+            flex-shrink: 0;
+            flex-basis: 100px;
+        }
+
+        .s-1 {
+            flex-shrink: 1;
+            flex-basis: 100px;
+        }
+
+        .s-2 {
+            flex-shrink: 2;
+            flex-basis: 100px;
+        }
+
+        .s-3 {
+           flex 0 1 100px;
+           /* grow=0 shrink=1 basis=100px */
+        }
+    </style>
+</head>
+<body>
+    <h1>basis</h1>
+    <p>auto</p>
+    <div class="flex-container">
+        <div class="item bauto fg-1">A</div>
+        <div class="item bauto fg-1">BBB</div>
+        <div class="item bauto fg-1">C</div>
+        <div class="item bauto fg-2">DEF</div>
+    </div>
+
+    <p>zero</p>
+    <div class="flex-container">
+        <div class="item b-0 fg-1">A</div>
+        <div class="item b-0 fg-1">BBB</div>
+        <div class="item b-0 fg-1">C</div>
+        <div class="item b-0 fg-1">DEF</div>
+    </div>
+
+    <p>basis + width</p>
+    <div class="flex-container">
+        <div class="item w-100 fg-2">BBB</div>
+        <div class="item w-100 fg-2">A</div>
+        <div class="item w-100 fg-2">C</div>
+        <div class="item w-100 fg-2">DEF</div>
+    </div>
+
+    <h1>shrink</h1>
+    <p>flex-shrink 1</p>
+    <div class="flex-container">
+        <div class="item2 s-1 fg-1">A</div>
+        <div class="item2 s-1 fg-1">B</div>
+        <div class="item2 s-1 fg-1">C</div>
+        <div class="item2 s-1 fg-1">D</div>
+        <div class="item2 s-1 fg-1">E</div>
+    </div>
+
+    <p>flex-shrink 1</p>
+    <div class="flex-container">
+        <div class="item2 s-1 fg-1">A</div>
+        <div class="item2 s-1 fg-1">BBBBBBBBBBBBBBBBBBBB</div>
+        <div class="item2 s-1 fg-1">C</div>
+        <div class="item2 s-1 fg-1">D</div>
+    </div>
+
+    <p>flex-shrink 0 / basis 100px</p>
+    <div class="flex-container">
+        <div class="item2 s-0 fg-1">A</div>
+        <div class="item2 s-0 fg-1">BBBBBBBBBBBBBBBBBBBB</div>
+        <div class="item2 s-0 fg-1">C</div>
+        <div class="item2 s-0 fg-1">DDdDDDDDD</div>
+    </div>
+
+    <p>flex-shrink alternados / basis 100px</p>
+    <div class="flex-container">
+        <div class="item2 s-1 fg-1">A</div>
+        <div class="item2 s-2 fg-1">BBBBBBBBBBBBBBBBBBBB</div>
+        <div class="item2 s-2 fg-1">C</div>
+        <div class="item2 s-3 fg-1">DDdDDDDDD</div>
+    </div>
+
+</body>
+</html>
